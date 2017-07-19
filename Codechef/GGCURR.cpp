@@ -1,0 +1,94 @@
+#include<bits/stdc++.h>
+using namespace std;
+ 
+typedef unsigned long long ull;
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<long long> vll;
+typedef  vector<unsigned long long > vull;
+ 
+#define pb push_back
+#define mp make_pair
+#define X first
+#define Y second
+ 
+#define rep(i,n) for(int i=0;i<(n);i++)
+#define Rep(i,a,b) for(int i=(a);i<(b);i++)
+#define repr(i,n) for(int i=(n-1);i>=0;i--)
+#define wh(t) while(t--)
+#define all(x) (x).begin(),(x).end()
+#define sz(a) a.size()
+ 
+#define MOD 1000000007
+#define PI 3.14159265358979
+#define endl '\n'
+ 
+inline int sd()
+{
+    register char c=getchar_unlocked();
+    ull n=0;
+    while(c<'0'||c>'9') c=getchar_unlocked();
+    for(;c>='0'&&c<='9';c=getchar_unlocked())
+    n=(n<<1)+(n<<3)+(c-'0');
+    return n;
+}
+ 
+inline void pd(ull n)
+{
+    char c[20];
+    int i=0;
+    do
+    {
+    c[i++]=n%10+'0';
+    n/=10;
+    }while(n!=0);
+    i--;
+    while(i>=0)
+    putchar_unlocked(c[i--]);
+    putchar_unlocked('\n');
+}
+int k[2];
+int Max(int a,int b)
+{
+    return a>b?a:b;
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int t,n,x,y;
+    cin>>t;
+    wh(t){
+        cin>>n>>k[0]>>k[1];
+        vi a(n);
+        ull c=0,d=0;
+        rep(i,n){
+            cin>>a[i];
+        }
+        int max=*max_element(all(a));
+        vi val(max+1) ;
+        val[0]=1;
+        for(int i=1;i<=max;i++){
+            for(int j=0;j<2;j++){
+                if(k[j]<=i)
+                {
+                    val[i]=Max(val[i-k[j]],val[i]);
+                                 
+                }
+              }
+              
+ 
+            }
+            
+            rep(i,n){
+            if(val[a[i]]==1) c++;
+            else 
+              d++;
+            }
+        cout<<c<<" "<<d<<'\n';
+        
+           
+    }
+}
+ 
+ 
