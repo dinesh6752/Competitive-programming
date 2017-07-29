@@ -1,34 +1,32 @@
 #include <bits/stdc++.h>
-using namespace std;
- 
- 
-#define mx 100003
- 
-int prime[mx];
-typedef unsigned long long ull;
-void segmentedSieve(vector<int> &isprime,ull l,ull r){
-	ull i,j;
-	for(i=2;i*i<=r;i++){
-		for(j=max(i*i,((l-1+i)/i)*i);j<=r;j+=i){
-			isprime[j-l]=1;
-			
+using  namespace std;
+bool isP[100006]={0};
+typedef  long long ll;
+ll p(ll m,ll n){
+	fill(isP,isP+100006,true);
+    ll c=0;
+	for(ll i=2;i*i<=n;i++){
+
+		for(ll j=max(i*i,((m+i-1)/i)*i);j<=n;j+=i){
+			isP[j-m]=false;
 		}
 	}
+	/*for(int i=0;i<13;i++){
+		cout<<m+i<<" "<<isP[i]<<" ";
+	}*/
+	for(ll j=0;j<=n-m;j++){
+		if(isP[j]==true&&m+j!=1){
+			cout<<m+j<<"\n";
+		}
+	}
+	return c;
 }
- 
- 
 int main(){
-	ull t,l,r;
+    ios_base::sync_with_stdio(false);
+	ll t,m,n;
 	cin>>t;
 	while(t--){
-		cin>>l>>r;
-		std::vector<int> isprime(r-l+1);
-		segmentedSieve(isprime,l,r);
-		for(int i=0;i<(r-l)+1;i++){
-			if(isprime[i]==0&&i+l!=1){
-				cout<<i+l<<endl;
-			}
-		}
+		cin>>m>>n;
+        p(m,n);
 	}
 }
- 
