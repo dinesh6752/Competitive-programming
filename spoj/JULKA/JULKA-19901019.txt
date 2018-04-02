@@ -1,0 +1,7 @@
+from math import *
+t = 10
+for i in range(0,t):
+	n=int(input())
+	d=int(input())
+	print(((n+d) // 2))
+	print(((n-d) // 2 ))

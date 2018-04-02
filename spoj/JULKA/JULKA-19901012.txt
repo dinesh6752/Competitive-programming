@@ -1,0 +1,7 @@
+from math import *
+t = 10
+for i in range(0,t):
+	n=int(input())
+	d=int(input())
+	print(int(ceil((n+d) >> 1)))
+	print(int(ceil((n-d) >> 1 )))

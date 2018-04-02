@@ -1,0 +1,7 @@
+ 
+t = 10
+for i in range(0,t):
+	n=int(input())
+	d=int(input())
+	print((n+d) >> 1)
+	print((n-d) >> 1)
